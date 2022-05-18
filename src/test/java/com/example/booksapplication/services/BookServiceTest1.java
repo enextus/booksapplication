@@ -1,5 +1,6 @@
 package com.example.booksapplication.services;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -7,8 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class BookServiceTest {
-    BookService bookService = new BookService();
+class BookServiceTest1 {
+
+    private BookService bookService;
+
+    @BeforeEach
+    void setUp() {
+        bookService = new BookService();
+    }
 
     @DisplayName("bookService list size")
     @Test
