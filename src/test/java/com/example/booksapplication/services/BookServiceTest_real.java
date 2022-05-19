@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class BookServiceTest1 {
+class BookServiceTest_real {
 
     private BookService bookService;
 

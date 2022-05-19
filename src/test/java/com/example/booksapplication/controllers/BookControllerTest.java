@@ -1,6 +1,11 @@
 package com.example.booksapplication.controllers;
 
+import java.util.logging.Logger;
+
+import com.example.booksapplication.BooksApplication;
 import com.example.booksapplication.services.BookService;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -23,15 +29,35 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = { BooksApplication.class })
 @WebMvcTest(BookController.class)
 //@AutoConfigureMockMvc
 class BookControllerTest {
+
+    private static final Logger log = Logger.getLogger(BookControllerTest.class.getName());
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
     private BookService bookService;
+
+    @BeforeAll
+    static void setup() {
+        log.info("@BeforeAll - executes once before all test methods in this class");
+    }
+
+    @BeforeEach
+    void init() {
+        log.info("@BeforeEach - executes before each test method in this class");
+    }
+
+    @DisplayName("Single test successful")
+    @Test
+    void testSingleSuccessTest() {
+        log.info("Success");
+
+    }
 
     @DisplayName("greetingShouldReturnMessageFromService Test")
     @Test

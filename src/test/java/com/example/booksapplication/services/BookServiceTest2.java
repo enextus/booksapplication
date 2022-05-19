@@ -73,4 +73,5 @@ class BookServiceTest2 {
 	void testGreet() {
 		assertThat(bookServiceUnderTest.greet()).isEqualTo("Hello, Mock");
 	}
+
 }
