@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 
 import com.example.booksapplication.BooksApplication;
 import com.example.booksapplication.services.BookService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -77,5 +79,16 @@ class BookControllerTest {
 
         assertEquals("Hello, Mock", result.getResponse().getContentAsString());
     }
+
+    @AfterEach
+    void tearDown() {
+        log.info("@AfterEach - executed after each test method.");
+    }
+
+    @AfterAll
+    static void done() {
+        log.info("@AfterAll - executed after all test methods.");
+    }
+
 
 }
